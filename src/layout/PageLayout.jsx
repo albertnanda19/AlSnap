@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
-import Sidebar from '../components/AuthForm/Sidebar';
+import Sidebar from '../components/AuthForm/Sidebar/Sidebar';
 import { useLocation } from 'react-router-dom';
 
 const PageLayout = ({ children }) => {
