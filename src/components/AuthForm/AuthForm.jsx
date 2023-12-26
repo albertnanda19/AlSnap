@@ -1,50 +1,19 @@
-import { Box, Image, Input, VStack, Button, Flex, Text } from '@chakra-ui/react'
+import { Box, Image, VStack, Flex, Text } from '@chakra-ui/react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import Login from './Login';
+import SignUp from './SignUp';
 
 const AuthForm = () => {
 
     const [isLogin, setIsLogin] = useState(true);
-    const navigate = useNavigate();
-    const [inputs, setInputs] = useState({
-        email: "",
-        password: "",
-        confirmPassword: ""
-    })
-
-    const handleAuth = () => {
-        if (!inputs.email || !inputs.password || !inputs.confirmPassword) {
-            alert("Please fill all the fields!!");
-            return;
-        }
-
-        navigate("/");
-    }
 
     return (
         <>
             <Box border={"1px solid gray"} borderRadius={5} padding={5}>
                 <VStack spacing={4}>
                     <Image src='/logo.png' h={24} cursor={"pointer"} alt='Alsnap' />
-                    <Input placeholder='Email' fontSize={14} type='email'
-                        value={inputs.email}
-                        onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-                    />
-                    <Input placeholder='Password' fontSize={14} type='password'
-                        value={inputs.password}
-                        onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-                    />
 
-                    {!isLogin && (
-                        <Input placeholder='Confirm Password' fontSize={14} type='password'
-                            value={inputs.confirmPassword}
-                            onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
-                        />
-                    )}
-
-                    <Button w={"full"} colorScheme='blue' size={"sm"} fontSize={"14"} onClick={handleAuth}>
-                        {isLogin ? "Log In" : "Sign Up"}
-                    </Button>
+                    {isLogin ? <Login /> : <SignUp />}
 
                     <Flex alignItems={"center"} justifyContent={"center"} my={4} gap={1} w={"full"}>
                         <Box flex={2} h={"1px"} bg={"gray.400"} />
