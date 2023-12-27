@@ -4,6 +4,7 @@ import { CreatePostLogo, NotificationsLogo, SearchLogo } from '../../assets/cons
 import { AiFillHome } from 'react-icons/ai'
 import { BiLogOut } from 'react-icons/bi'
 import useLogout from '../../hooks/useLogout';
+import useAuthStore from '../../store/authStore';
 
 const Sidebar = () => {
 
@@ -33,6 +34,7 @@ const Sidebar = () => {
     ]
 
     const { handleLogout, isLoggingOut } = useLogout();
+    const authUser = useAuthStore(state => state.user);
 
     return (
         <Box
@@ -66,7 +68,7 @@ const Sidebar = () => {
                         >
                             <Link
                                 display={"flex"}
-                                to={item.link || null}
+                                to={`${authUser?.username}`}
                                 as={RouterLink}
                                 alignItems={"center"}
                                 gap={4}
