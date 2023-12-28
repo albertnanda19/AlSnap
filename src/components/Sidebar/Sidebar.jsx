@@ -8,6 +8,8 @@ import useAuthStore from '../../store/authStore';
 
 const Sidebar = () => {
 
+    const { handleLogout, isLoggingOut } = useLogout();
+    const authUser = useAuthStore(state => state.user);
     const sidebarItems = [
         {
             icon: <AiFillHome size={25} />,
@@ -29,12 +31,10 @@ const Sidebar = () => {
         {
             icon: <Avatar size={"sm"} name="Albert" src="/profilepic.png" />,
             text: "Profile",
-            link: "/albertm"
+            link: authUser?.username
         },
     ]
 
-    const { handleLogout, isLoggingOut } = useLogout();
-    const authUser = useAuthStore(state => state.user);
 
     return (
         <Box
@@ -68,7 +68,7 @@ const Sidebar = () => {
                         >
                             <Link
                                 display={"flex"}
-                                to={`${authUser?.username}`}
+                                to={item.link}
                                 as={RouterLink}
                                 alignItems={"center"}
                                 gap={4}
