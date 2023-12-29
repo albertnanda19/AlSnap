@@ -4,7 +4,7 @@ import useShowToast from "./useShowToast"
 import { collection, limit, orderBy, query, where, getDocs } from "firebase/firestore"
 import { firestore } from "../firebase/firebase";
 
-const useSuggestedUsers = () => {
+const useGetSuggestedUsers = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [suggestedUsers, setSuggestedUsers] = useState([]);
     const authUser = useAuthStore(state => state.user);
@@ -24,7 +24,7 @@ const useSuggestedUsers = () => {
 
                 const querySnapShot = await getDocs(q);
                 const users = [];
-                querySnapShot.forEach(doc => {
+                querySnapShot.forEach((doc) => {
                     users.push({ ...doc.data(), id: doc.id })
                 })
 
@@ -43,4 +43,4 @@ const useSuggestedUsers = () => {
     return { isLoading, suggestedUsers }
 }
 
-export default useSuggestedUsers
+export default useGetSuggestedUsers
