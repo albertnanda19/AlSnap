@@ -14,7 +14,7 @@ const Home = () => {
         >
             <Link
                 display={"flex"}
-                top={"/"}
+                to={"/"}
                 as={RouterLink}
                 alignItems={"center"}
                 gap={4}
