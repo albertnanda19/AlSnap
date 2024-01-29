@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAHPTyFnk8bpyM-E7VPGTRRGtzk-0VPsx0",
-    authDomain: "alsnap-d48f0.firebaseapp.com",
-    projectId: "alsnap-d48f0",
-    storageBucket: "alsnap-d48f0.appspot.com",
-    messagingSenderId: "143558868992",
-    appId: "1:143558868992:web:7bd227bce695a01f92d8e5",
-    measurementId: "G-GH3N3CZK3H"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
